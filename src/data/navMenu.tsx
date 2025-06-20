@@ -1,21 +1,20 @@
 import { Workflow, PlugZap, icons } from "lucide-react";
-import { title } from "process";
 
 export const navMenuItems: navMenuTypes[] = [
   {
     title: "Workflows",
-    url: "/dashboard/user/workflows",
-    icons: Workflow,
+    url: "/org/orgid/workflows_alpha",
+    icon: Workflow,
   },
   {
     title: "Intigration",
-    url: "/dashboard/user/integration",
-    icons: PlugZap,
+    url: "/org/orgid/app_integration",
+    icon: PlugZap,
   },
 ];
 
 export type navMenuTypes = {
-    title: string;
-    url: string;
-    icons: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-}
+  title: string;
+  url: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+};
