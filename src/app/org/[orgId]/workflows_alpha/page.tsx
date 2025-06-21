@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react";
+import Loading from "./loading";
 
 export default function page() {
-  return (
-    <div>wokflow</div>
-  )
+  return <div className="">workflow</div>;
 }

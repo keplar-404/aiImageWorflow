@@ -25,11 +25,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SidebarProvider className="">
+    <SidebarProvider className="bg-accent">
       <AppSidebar />
-      <main className="w-full pt-5 pl-4 ">
-        <SidebarTrigger className="hover:bg-accent hover:cursor-pointer" />
-        <section className="pt-3 pl-2">{children}</section>
+      <main className="w-full py-2 px-2">
+        <section className="bg-white h-full w-full rounded-lg  border-2 ">
+          <div className="py-5 px-3">
+            <SidebarTrigger className="hover:bg-accent hover:cursor-pointer" />
+          </div>
+
+          <hr className="w-full text-accent" />
+
+          <main className="pt-4 px-5">{children}</main>
+        </section>
       </main>
     </SidebarProvider>
   );

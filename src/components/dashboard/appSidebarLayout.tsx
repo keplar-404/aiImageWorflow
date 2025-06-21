@@ -5,7 +5,6 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
-  SidebarMenu,
 } from "@/components/ui/sidebar";
 
 
@@ -14,12 +13,12 @@ import MenuItem from "./MenuItem";
 
 export function AppSidebar() {
   return (
-    <Sidebar  className="">
-      <SidebarHeader className="bg-accent ">
+    <Sidebar collapsible="icon" className="group-data-[side=left]:border-0">
+      <SidebarHeader className="bg-accent">
         <AppSidebarHeader />
       </SidebarHeader>
-      <SidebarContent className="bg-accent ">
-        <SidebarGroup className="">
+      <SidebarContent className="bg-accent">
+        <SidebarGroup>
           <SidebarGroupLabel>Platfrom</SidebarGroupLabel>
           <SidebarGroupContent>
             <MenuItem />
