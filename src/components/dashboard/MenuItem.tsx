@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar";
-import { navMenuItems } from "@/data/navMenu";
+import { dashboardMenuItems } from "@/data/dashboardMenuData";
 
 export default function MenuItem() {
   const pathname = usePathname();
@@ -10,7 +10,7 @@ export default function MenuItem() {
 
   return (
     <SidebarMenu>
-      {navMenuItems.map((item) => (
+      {dashboardMenuItems.map((item) => (
         <SidebarMenuItem key={item.title} className="">
           <SidebarMenuButton
             asChild

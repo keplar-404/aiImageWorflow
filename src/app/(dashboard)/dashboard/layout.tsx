@@ -1,18 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "../../globals.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/dashboard/AppSidebarLayout";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,19 +14,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+<div>
     <SidebarProvider className="bg-accent">
       <AppSidebar />
-      <main className="w-full py-2 px-2">
-        <section className="bg-white h-full w-full rounded-lg  border-2 ">
-          <div className="py-5 px-3">
+      <div className="w-full py-2 px-2 h-svh">
+        <div className="bg-white size-full rounded-lg border-2 ">
+          <div className="py-5 px-3 h-1/10">
             <SidebarTrigger className="hover:bg-accent hover:cursor-pointer" />
           </div>
-
           <hr className="w-full text-accent" />
-
-          <main className="pt-4 px-5">{children}</main>
-        </section>
-      </main>
+          <div className="pt-4 px-5 h-9/10 custom classs">{children}</div>
+        </div>
+      </div>
     </SidebarProvider>
+</div>
+    
   );
 }

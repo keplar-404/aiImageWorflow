@@ -1,14 +1,14 @@
 import { Workflow, PlugZap, icons } from "lucide-react";
 
-export const navMenuItems: navMenuTypes[] = [
+export const dashboardMenuItems: navMenuTypes[] = [
   {
     title: "Workflows",
-    url: "/org/orgid/workflows_alpha",
+    url: "/dashboard/workflows",
     icon: Workflow,
   },
   {
     title: "Intigration",
-    url: "/org/orgid/app_integration",
+    url: "/dashboard/app_integration",
     icon: PlugZap,
   },
 ];
