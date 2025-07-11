@@ -1,72 +1,74 @@
 "use client";
-import React, { useCallback } from "react";
+import React, { useMemo, useCallback } from "react";
 import {
   ReactFlow,
-  MiniMap,
-  Controls,
   Background,
   useNodesState,
-  useEdgesState,
-  addEdge,
-  Panel,
-  Connection,
   BackgroundVariant,
-  ViewportPortal,
+  Node,
+  Panel,
 } from "@xyflow/react";
 
 import "@xyflow/react/dist/style.css";
 import "./style.css";
- 
-const initialNodes = [
-  { id: "1", position: { x: 0, y: 0 }, data: { label: "1" } },
-  { id: "2", position: { x: 0, y: 100 }, data: { label: "2" } },
-];
-const initialEdges = [{ id: "e1-2", source: "1", target: "2" }];
+import NavBar from "../../../../components/workflow/NavBar";
+import CustomNode from "@/components/workflow/customNode";
+
+const initialNodes: Node[] = [];
 
 export default function App() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  const onConnect = useCallback(
-    (params: Connection) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
+  const nodeTypes = useMemo(
+    () => ({
+      customNode: CustomNode,
+    }),
+    []
   );
+
+  const addNode = useCallback(() => {
+    const newNode: Node = {
+      id: `node-${Date.now()}`,
+      type: "customNode",
+      position: {
+        x: Math.random() * 300,
+        y: Math.random() * 300,
+      },
+      data: { value: Math.floor(Math.random() * 1000) },
+    };
+    setNodes((nds) => [...nds, newNode]);
+  }, [setNodes]);
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <ReactFlow
         nodes={nodes}
-        edges={edges}
         onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
-        // panOnScroll={true}
+        nodeTypes={nodeTypes}
+        panOnScroll={true}
         selectionOnDrag={true}
-        // panOnDrag={false}
-        style={{ cursor: "default" }}
+        panOnDrag={[1, 2]}
+        minZoom={0.3} // Minimum zoom level (10%)
       >
-        <Panel position="top-left">top-left</Panel>
-
-        <Panel position="top-right">top-right</Panel>
-
-
-
-    <ViewportPortal>
-      <div
-        style={{ transform: 'translate(100px, 100px)', position: 'absolute' }}
-      >
-       This section is for custom components that can be zoom and panned like the nodes.
-      </div>
-    </ViewportPortal>
-
-       
-        <Background
-          variant={BackgroundVariant.Dots}
-          gap={13}
-          size={1}
-          color=""
-        />
-        
+        <NavBar />
+        <Background variant={BackgroundVariant.Dots} gap={13} size={1.3} color="gray" bgColor="#EFF0F3"/>
+        <Panel position="bottom-center">
+          <button
+            onClick={addNode}
+            style={{
+              padding: "10px 20px",
+              backgroundColor: "#007bff",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              fontSize: "14px",
+              fontWeight: "500",
+            }}
+          >
+            Add Custom Node
+          </button>
+        </Panel>
       </ReactFlow>
     </div>
   );

@@ -1,0 +1,62 @@
+/* Override cursor for nodes and interactive elements to default */
+.react-flow__node {
+  cursor: default !important;
+}
+
+.react-flow__handle {
+  cursor: default !important;
+}
+
+.react-flow__edge {
+  cursor: default !important;
+}
+
+.react-flow__edge-path {
+  cursor: default !important;
+}
+
+.react-flow__connection-line {
+  cursor: default !important;
+}
+
+.react-flow__selection {
+  cursor: default !important;
+}
+
+/* Keep default cursor on hover for nodes and handles */
+.react-flow__node:hover {
+  cursor: default !important;
+}
+
+.react-flow__handle:hover {
+  cursor: default !important;
+}
+
+.react-flow__edge:hover {
+  cursor: default !important;
+}
+
+/* Allow natural panning cursors for canvas - DO NOT override these */
+/* .react-flow__pane - let this use its natural cursor behavior */
+/* .react-flow__pane.panning - let this show grabbing cursor */
+/* .react-flow__pane--panning - let this show grabbing cursor */
+
+/* Override cursor for minimap if you add it later */
+.react-flow__minimap {
+  cursor: default !important;
+}
+
+.react-flow__pane.panning{
+    cursor: grab !important;
+}
+.react-flow__pane--panning{
+    cursor: grabbing !important;
+}
+
+.react-flow__pane {
+  cursor: default !important;
+}
+
+.react-flow__minimap-mask {
+  cursor: default !important;
+}
