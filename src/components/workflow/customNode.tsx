@@ -51,7 +51,7 @@ export default function CustomNode() {
           <div className="flex flex-col gap-y-1.5">
             <Label className="text-sm">API Key</Label>
             <Input placeholder="43Kk4..." type="password" />
-          </div>
+          </div> 
         </div>
       </CardContent>
       <CardFooter className="pt-6 pb-4">
