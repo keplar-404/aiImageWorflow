@@ -4,7 +4,7 @@
   /* Custom Variables */
   --xy-theme-selected: #f57dbd;
   --xy-theme-hover: #c5c5c5;
-  --xy-theme-edge-hover: black;
+  --xy-theme-edge-hover: #ef4444;
   --xy-theme-color-focus: #e8e8e8;
 
   /* Built-in Variables see https://reactflow.dev/learn/customization/theming */
@@ -48,25 +48,51 @@
   box-shadow: var(--xy-node-boxshadow-default);
 }
 
+/* Edge styling and selection feedback */
+.react-flow__edge {
+  cursor: pointer !important;
+  /* Removed transition to prevent edge cutting during drag */
+}
+
+.react-flow__edge:hover {
+  cursor: pointer !important;
+}
+
+.react-flow__edge-path {
+  cursor: pointer !important;
+  /* Removed transition to prevent edge cutting during drag */
+}
+
+.react-flow__edge-path:hover {
+  stroke-width: 3px;
+  cursor: pointer !important;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: #ef4444 !important;
+  stroke-width: 3px !important;
+}
+
+/* Ensure edges stay connected during node dragging */
+.react-flow__edge-updating .react-flow__edge-path {
+  stroke: #3b82f6 !important;
+  stroke-width: 2px !important;
+}
+
+/* Connection line styling */
+.react-flow__connection-line {
+  stroke: #3b82f6 !important;
+  stroke-width: 2px !important;
+  stroke-dasharray: none !important;
+}
+
 /* Mouse cursor css  */
 .react-flow__node {
   cursor: default !important;
 }
 
 .react-flow__handle {
-  cursor: default !important;
-}
-
-.react-flow__edge {
-  cursor: default !important;
-}
-
-.react-flow__edge-path {
-  cursor: default !important;
-}
-
-.react-flow__connection-line {
-  cursor: default !important;
+  cursor: crosshair !important;
 }
 
 .react-flow__selection {
@@ -79,11 +105,7 @@
 }
 
 .react-flow__handle:hover {
-  cursor: default !important;
-}
-
-.react-flow__edge:hover {
-  cursor: default !important;
+  cursor: crosshair !important;
 }
 
 .react-flow__minimap {

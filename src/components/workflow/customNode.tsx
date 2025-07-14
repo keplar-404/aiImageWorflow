@@ -13,10 +13,16 @@ import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import { X } from "lucide-react";
 import { Textarea } from "../ui/textarea";
-import { Handle, Position } from "@xyflow/react";
+import { Handle, Position, useReactFlow } from "@xyflow/react";
 import { Progress } from "@/components/ui/progress";
 
-export default function CustomNode() {
+export default function CustomNode({ id, data }: { id: string; data: any }) {
+  const { deleteElements } = useReactFlow();
+
+  const handleDelete = () => {
+    deleteElements({ nodes: [{ id }] });
+  };
+
   return (
     <div className="relative">
       <Card className="w-[25rem] border-0 shadow-none">
@@ -27,7 +33,10 @@ export default function CustomNode() {
           </CardDescription>
 
           <CardAction>
-            <div className=" cursor-pointer hover:bg-gray-300 p-[4px] rounded-sm">
+            <div 
+              className="cursor-pointer hover:bg-gray-300 p-[4px] rounded-sm"
+              onClick={handleDelete}
+            >
               <X size={16} />
             </div>
           </CardAction>
@@ -36,9 +45,9 @@ export default function CustomNode() {
           <div className="flex flex-col gap-y-5">
             <div className="relative mx-4">
               <div className="mx-1">
-                <Progress value={40} className=" h-2 mb-2" />
+                <Progress value={40} className="h-2 mb-2" />
               </div>
-              <Button className="cursor-pointer bg-black hover:bg-black/70 w-full ">
+              <Button className="cursor-pointer bg-black hover:bg-black/70 w-full">
                 Test
               </Button>
             </div>
